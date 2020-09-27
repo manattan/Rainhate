@@ -74,7 +74,7 @@ def change():
     print(nameStr)
     api.update_profile(name=nameStr)   
 
-schedule.every(1).hours.do(change)
+schedule.every(10).minutes.do(change)
 while True:
     schedule.run_pending()
     time.sleep(1)
