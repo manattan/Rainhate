@@ -36,13 +36,20 @@ def decide():
                 return weatherData[2],faceData[8]
             elif data['main']['humidity'] <80:
                 return weatherData[2],faceData[1]
-        if data['clouds']['all'] <85:
+        elif data['clouds']['all'] >60:
             if data['wind']['speed'] >10:
-                return weatherData[1],faceData[4]
+                return weatherData[1],faceData[3]
             elif data['wind']['speed'] >5:
-                return weatherData[1],faceData[5]
-            elif data['wind']['speed'] <=5:
                 return weatherData[1],faceData[2]
+            elif data['wind']['speed'] <=5:
+                return weatherData[1],faceData[1]
+        elif data['clouds']['all'] <=60:
+            if data['wind']['speed'] >10:
+                return weatherData[0],faceData[3]
+            elif data['wind']['speed'] >5:
+                return weatherData[0],faceData[2]
+            elif data['wind']['speed'] <=5:
+                return weatherData[0],faceData[1]
     elif data['weather'][0]['main'] == 'Rain':
         if data['rain']:
             if data['rain']['3h'] >20:
