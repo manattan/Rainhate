@@ -79,9 +79,14 @@ def decide():
 def change():
     nameStr = "もぎ%s%s" % (decide())
     print(nameStr)
-    api.update_profile(name=nameStr)   
+    api.update_profile(name=nameStr)  
 
-schedule.every(10).minutes.do(change)
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+def main():
+    schedule.every(10).minutes.do(change)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+if __name__=="__main__":
+    main()
+
